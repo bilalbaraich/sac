@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWAT Agro Chemicals - سوات ایگرو کیمیکلز</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="urdu-mode">
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">🌾 <span class="logo-text">SWAT Agro Chemicals</span></div>
+            <div class="tagline">سوات ایگرو کیمیکلز - آپ کی فصل کا محافظ</div>
+            <div class="language-toggle">
+                <button class="lang-btn active" onclick="setLanguage('ur')">اردو</button>
+                <button class="lang-btn" onclick="setLanguage('en')">English</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-section">
+            <h2 class="section-title" id="formTitle">فصل کا انتخاب کریں</h2>
+            
+            <form id="cropForm" onsubmit="getRecommendation(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="crop" id="cropLabel">فصل</label>
+                        <select id="crop" required>
+                            <option value="">منتخب کریں</option>
+                            <optgroup label="فصلیں - Crops" data-ur="فصلیں">
+                                <option value="Wheat" data-ur="گندم">گندم</option>
+                                <option value="Wheat">Wheat</option>
+                                <option value="Rice" data-ur="چاول">چاول</option>
+                                <option value="Rice">Rice</option>
+                                <option value="Cotton" data-ur="کپاس">کپاس</option>
+                                <option value="Cotton">Cotton</option>
+                                <option value="Maize" data-ur="مکئی">مکئی</option>
+                                <option value="Maize">Maize</option>
+                                <option value="Sugarcane" data-ur="گنا">گنا</option>
+                                <option value="Sugarcane">Sugarcane</option>
+                            </optgroup>
+                            <optgroup label="سبزیاں - Vegetables" data-ur="سبزیاں">
+                                <option value="Potato" data-ur="آلو">آلو</option>
+                                <option value="Potato">Potato</option>
+                                <option value="Tomato" data-ur="ٹماٹر">ٹماٹر</option>
+                                <option value="Tomato">Tomato</option>
+                                <option value="Onion" data-ur="پیاز">پیاز</option>
+                                <option value="Onion">Onion</option>
+                                <option value="Chili" data-ur="مرچ">مرچ</option>
+                                <option value="Chili">Chili</option>
+                                <option value="Cucumber" data-ur="کھیرا">کھیرا</option>
+                                <option value="Cucumber">Cucumber</option>
+                            </optgroup>
+                            <optgroup label="پھل - Fruits" data-ur="پھل">
+                                <option value="Apple" data-ur="سیب">سیب</option>
+                                <option value="Apple">Apple</option>
+                                <option value="Pomegranate" data-ur="انار">انار</option>
+                                <option value="Pomegranate">Pomegranate</option>
+                                <option value="Grapes" data-ur="انگور">انگور</option>
+                                <option value="Grapes">Grapes</option>
+                                <option value="Apricot" data-ur="خوبانی">خوبانی</option>
+                                <option value="Apricot">Apricot</option>
+                                <option value="Almond" data-ur="بادام">بادام</option>
+                                <option value="Almond">Almond</option>
+                                <option value="Peach" data-ur="آڑو">آڑو</option>
+                                <option value="Peach">Peach</option>
+                                <option value="Plum" data-ur="آلوچہ">آلوچہ</option>
+                                <option value="Plum">Plum</option>
+                                <option value="Cherry" data-ur="چیری">چیری</option>
+                                <option value="Cherry">Cherry</option>
+                                <option value="Walnut" data-ur="اخروٹ">اخروٹ</option>
+                                <option value="Walnut">Walnut</option>
+                                <option value="Pistachio" data-ur="پستہ">پستہ</option>
+                                <option value="Pistachio">Pistachio</option>
+                                <option value="Date" data-ur="کھجور">کھجور</option>
+                                <option value="Date">Date Palm</option>
+                                <option value="Melon" data-ur="خربوزہ">خربوزہ</option>
+                                <option value="Melon">Melon</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cropStage" id="stageLabel">فصل کا مرحلہ</label>
+                        <select id="cropStage" required>
+                            <option value="">منتخب کریں</option>
+                            <option value="Seedling" data-ur="شروعاتی">شروعاتی</option>
+                            <option value="Seedling">Seedling</option>
+                            <option value="Vegetative" data-ur="نشوونما">نشوونما</option>
+                            <option value="Vegetative">Vegetative</option>
+                            <option value="Flowering" data-ur="پھول آنا">پھول آنا</option>
+                            <option value="Flowering">Flowering</option>
+                            <option value="Fruiting" data-ur="پھل بننا">پھل بننا</option>
+                            <option value="Fruiting">Fruiting</option>
+                            <option value="Maturity" data-ur="پختگی">پختگی</option>
+                            <option value="Maturity">Maturity</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="problemType" id="problemLabel">مسئلہ کی قسم</label>
+                        <select id="problemType" required>
+                            <option value="">منتخب کریں</option>
+                            <option value="Fungal" data-ur="فنگل بیماری">فنگل بیماری</option>
+                            <option value="Fungal">Fungal Disease</option>
+                            <option value="Pest" data-ur="کیڑے">کیڑے</option>
+                            <option value="Pest">Pest</option>
+                            <option value="Weed" data-ur="جڑی بوٹی">جڑی بوٹی</option>
+                            <option value="Weed">Weed</option>
+                            <option value="Nutrient" data-ur="غذائی کمی">غذائی کمی</option>
+                            <option value="Nutrient">Nutrient Deficiency</option>
+                            <option value="General" data-ur="عام دیکھ بھال">عام دیکھ بھال</option>
+                            <option value="General">General Care</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="diseaseGroup" style="display:none;">
+                        <label for="disease" id="diseaseLabel">بیماری کی قسم</label>
+                        <select id="disease">
+                            <option value="">منتخب کریں</option>
+                            <option value="Leaf Spot" data-ur="پتوں پر دھبے">پتوں پر دھبے</option>
+                            <option value="Leaf Spot">Leaf Spot</option>
+                            <option value="Rust" data-ur="زنگ">زنگ</option>
+                            <option value="Rust">Rust</option>
+                            <option value="Blight" data-ur="جھلسا">جھلسا</option>
+                            <option value="Blight">Blight</option>
+                            <option value="Powdery Mildew" data-ur="سفید پاؤڈر">سفید پاؤڈر</option>
+                            <option value="Powdery Mildew">Powdery Mildew</option>
+                            <option value="Root Rot" data-ur="جڑ سڑن">جڑ سڑن</option>
+                            <option value="Root Rot">Root Rot</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="pestGroup" style="display:none;">
+                        <label for="pest" id="pestLabel">کیڑے کی قسم</label>
+                        <select id="pest">
+                            <option value="">منتخب کریں</option>
+                            <option value="Aphids" data-ur="چپکے">چپکے</option>
+                            <option value="Aphids">Aphids</option>
+                            <option value="Whitefly" data-ur="سفید مکھی">سفید مکھی</option>
+                            <option value="Whitefly">Whitefly</option>
+                            <option value="Bollworm" data-ur="ٹنڈے">ٹنڈے</option>
+                            <option value="Bollworm">Bollworm</option>
+                            <option value="Thrips" data-ur="تھرپس">تھرپس</option>
+                            <option value="Thrips">Thrips</option>
+                            <option value="Mites" data-ur="مائٹس">مائٹس</option>
+                            <option value="Mites">Mites</option>
+                            <option value="Stem Borer" data-ur="تنا سنڈی">تنا سنڈی</option>
+                            <option value="Stem Borer">Stem Borer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="deficiencyGroup" style="display:none;">
+                        <label for="deficiency" id="deficiencyLabel">کمی کی قسم</label>
+                        <select id="deficiency" multiple size="5">
+                            <option value="Nitrogen" data-ur="نائٹروجن">نائٹروجن</option>
+                            <option value="Nitrogen">Nitrogen</option>
+                            <option value="Phosphorus" data-ur="فاسفورس">فاسفورس</option>
+                            <option value="Phosphorus">Phosphorus</option>
+                            <option value="Potassium" data-ur="پوٹاشیم">پوٹاشیم</option>
+                            <option value="Potassium">Potassium</option>
+                            <option value="Iron" data-ur="آئرن">آئرن</option>
+                            <option value="Iron">Iron</option>
+                            <option value="Zinc" data-ur="زنک">زنک</option>
+                            <option value="Zinc">Zinc</option>
+                            <option value="Boron" data-ur="بوران">بوران</option>
+                            <option value="Boron">Boron</option>
+                            <option value="Calcium" data-ur="کیلشیم">کیلشیم</option>
+                            <option value="Calcium">Calcium</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">مشورہ حاصل کریں</button>
+            </form>
+        </div>
+
+        <div id="results" class="results"></div>
+    </div>
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
